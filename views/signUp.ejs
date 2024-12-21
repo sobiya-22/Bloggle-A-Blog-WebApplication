@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs') %>
+  <title>SignUp Page</title>
+
+  </html>
+
+  <body>
+    <%- include('partials/navbar.ejs') %>
+      <div class="box">
+        <div class="signup-card">
+          <form action="/userAccess/signUp" method="post">
+            <div class="full-name">
+              <label for="firstName">First Name</label>
+              <input type="text" name="fname" id="fname">
+              <label for="lastName">Second Name</label>
+              <input type="text" name="lname" id="lname">
+            </div>
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email"><br>
+            <label for="password">Enter Password</label>
+            <input type="password" name="old-password" id="password"><br>
+            <label for="password">Confirm Password</label>
+            <input type="password" name="confirm-password" id="confirm-password"><br>
+            <button class="submit-btn">Create Account</button>
+          </form>
+        </div>
+      </div>
+      <%- include('partials/footer.ejs') %>
+  </body>
