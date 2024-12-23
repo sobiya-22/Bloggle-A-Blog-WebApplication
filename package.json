@@ -11,8 +11,11 @@
   "author": "Sobiya Shaikh",
   "license": "ISC",
   "dependencies": {
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "express-session": "^1.18.1",
     "mdb-ui-kit": "^8.1.0",
     "mongoose": "^8.9.2",
     "nodemon": "^3.1.9"

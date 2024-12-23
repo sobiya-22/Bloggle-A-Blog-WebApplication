@@ -5,6 +5,10 @@
 body{
     align-items: center;
     justify-content: center;
+    
+}
+.main-content{
+    padding: 30px;
 }
 .box{
     padding: 50px;
@@ -43,5 +47,14 @@ label{
     background: rgb(29, 94, 193);
     cursor: pointer;
     color: white;
+}
+.col{
+    margin: 30px;
+}
+.card{
+    width: 400px;
+}
+.add-blog-section{
+    
 }
 

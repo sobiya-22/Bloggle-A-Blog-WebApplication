@@ -12,12 +12,21 @@
         <li class="nav-item mr-4">
           <a class="nav-link" href="#">About Team</a>
         </li>
+        <%if(locals.userData){%>
+          <li class="nav-item mr-4">
+            <a class="nav-link" href="/blog/addBlogForm">Create Blog Post</a>
+          </li>
+          <li class="nav-item mr-4">
+            <a class="nav-link" href="/userAccess/logout">Log Out</a>
+          </li>
+        <% }else{ %>
         <li class="nav-item mr-4">
           <a class="nav-link" href="/userAccess/signIn">Sign In</a>
         </li>
         <li class="nav-item mr-4">
           <a class="nav-link" href="/userAccess/signUp">Sign Up</a>
         </li>
+        <% } %>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

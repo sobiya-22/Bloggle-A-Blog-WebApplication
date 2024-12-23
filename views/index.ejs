@@ -2,11 +2,40 @@
 
 <title>Home</title>
 </head>
+
 <body>
     <%- include('partials/navbar.ejs') %>
-    <div class="home-page">
-        <img class="bloggle-img" src="/Images/Bloggle.png" width="900px" height="600px" alt="Home Img">
+    <div class="main-content">
+        <% if (userData && allBlogs.length > 0) { %>
+            <h1>Welcome back, <%= userData.fName %>!</h1>
+            <div class="container mt-3">
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-3">
+                    <% allBlogs.forEach(blog => { %>
+                        <div class="col">
+                            <div class="card text-center h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= blog.title %></h5>
+                                    <p class="card-text"><%= blog.description %></p>
+                                    <a href="#" class="btn btn-primary">Comment</a>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <%= new Date(blog.createdAt).toDateString() %>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        <% } else { %>
+            <div class="home-page">
+                <img class="bloggle-img" src="/Images/Bloggle.png" width="900px" height="600px" alt="Home Img">
+            </div>
+        <% } %>
     </div>
-    <%- include('partials/footer.ejs') %>
+    <div>
+        <%- include('partials/footer.ejs') %>
+    </div>
+    
 </body>
+
 </html>
