@@ -31,7 +31,7 @@ router.post('/signUp', async (req, res) => {
             password: confirmPass, 
         });
         console.log('Account created successfully!');
-        res.redirect('/');
+        res.redirect('/userAccess/signIn');
     } catch (error) {
         console.log('Error creating account:', error);
         res.status(500).send('Error creating account');
@@ -78,7 +78,7 @@ router.get('/logout', (req, res) => {
         if (err) {
             console.log('Error destroying session:', err);
             return res.status(500).send('Error during logout');
-        } res.redirect('/userAccess/signIn');
+        } res.redirect('/');
     })
 });
 export default router;

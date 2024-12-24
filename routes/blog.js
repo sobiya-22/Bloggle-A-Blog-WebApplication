@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.get('/addBlogForm', async (req, res) => {
     res.render('addBlogForm');
+    console.log(req.session.userId);
 });
 router.post('/addBlogPost', async(req, res) => {
     const data = req.body;

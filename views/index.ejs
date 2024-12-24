@@ -5,37 +5,52 @@
 
 <body>
     <%- include('partials/navbar.ejs') %>
+    
     <div class="main-content">
-        <% if (userData && allBlogs.length > 0) { %>
-            <h1>Welcome back, <%= userData.fName %>!</h1>
-            <div class="container mt-3">
-                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-3">
-                    <% allBlogs.forEach(blog => { %>
-                        <div class="col">
-                            <div class="card text-center h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title"><%= blog.title %></h5>
-                                    <p class="card-text"><%= blog.description %></p>
-                                    <a href="#" class="btn btn-primary">Comment</a>
-                                </div>
-                                <div class="card-footer text-muted">
-                                    <%= new Date(blog.createdAt).toDateString() %>
+        <% if(!locals.userData){ %>
+            <div class="home-page text-center mt-5">
+                <img class="bloggle-img img-fluid" src="/Images/Bloggle.png" alt="Home Img">
+                <h2 class="mt-4">Welcome to Bloggle!</h2>
+                <p class="lead">A place to share your ideas and thoughts with the world.</p>
+                <a href="/userAccess/signUp" class="btn btn-primary btn-lg mt-3 get-started-btn">Get Started</a>
+            </div>
+        <% } else{%>
+            <h1 class="welcome-msg text-center mt-4">Welcome back, <%= userData.fName %>!</h1>
+            
+            <% if (allBlogs.length > 0) { %>
+                <div class="container mt-2">
+                    <h2 class="text-center">Your Blogs</h2>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-4 mt-4">
+                        <% allBlogs.forEach(blog => { %>
+                            <div class="col">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= blog.title %></h5>
+                                        <p class="card-text text-truncate"><%= blog.description %></p>
+                                        <a href="#" class="btn btn-primary blog-btn">Delete</a>
+                                        <a href="#" class="btn btn-primary blog-btn">Update</a>
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                        Created on: <%= new Date(blog.createdAt).toDateString() %>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <% }); %>
+                        <% }); %>
+                    </div>
                 </div>
-            </div>
-        <% } else { %>
-            <div class="home-page">
-                <img class="bloggle-img" src="/Images/Bloggle.png" width="900px" height="600px" alt="Home Img">
-            </div>
+            <% } else { %>
+                <div class="container mt-5 text-center">
+                    <h3>No blogs found</h3>
+                    <p>It seems you haven't created any blogs yet. </p>
+                    <a href="/blog/addBlogForm" class="btn btn-success mt-3">Create your first blog!</a>
+                </div>
+            <% } %>
         <% } %>
     </div>
-    <div>
+    
+    <div class="footer">
         <%- include('partials/footer.ejs') %>
     </div>
-    
 </body>
 
 </html>
