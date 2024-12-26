@@ -7,10 +7,17 @@ import userAccessRoute from './routes/userAccess.js';
 import blogsRoute from './routes/blog.js';
 import User from './models/userAccess.js';
 import Blog from './models/blogs.js';
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000; 
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Set views directory and view engine
+app.set("views", path.join(__dirname, "views"));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
