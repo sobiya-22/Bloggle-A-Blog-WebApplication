@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-dotenv.config(); // Load environment variables from .env file
+dotenv.config();
 
 const connectDB = async () => {
   try {
@@ -11,7 +11,11 @@ const connectDB = async () => {
       throw new Error("Mongo URI is not defined in environment variables");
     }
 
-    await mongoose.connect(mongoURI);
+    await mongoose.connect(mongoURI, {
+      poolSize: 10, 
+      retryWrites: true
+    }
+    );
     console.log("MongoDB connected successfully");
   } catch (error) {
     console.error("MongoDB connection error:", error.message);
