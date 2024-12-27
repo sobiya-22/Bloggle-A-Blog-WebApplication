@@ -33,14 +33,14 @@ app.get('/', async (req, res) => {
   try {
     if (!req.session.userId) {
       // Redirect to sign-in page if the user is not logged in
-      return res.render('index.ejs', { userData: null, allBlogs: [] });
+      return res.render('index', { userData: null, allBlogs: [] });
     }
 
     const objID = req.session.userId.toString();
     const userData = await User.findById(objID);
     const blogs = await Blog.find({ createdBy: objID });
 
-    res.render('index.ejs', {
+    res.render('index', {
       userData: userData,
       allBlogs: blogs,
     });
