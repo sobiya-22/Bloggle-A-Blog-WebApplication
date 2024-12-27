@@ -11,7 +11,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // Get __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -58,6 +58,7 @@ app.get('/', async (req, res) => {
 
 // Connect to MongoDB and start server
 connectDB();
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server running on port ${port}`);
+// });
+export default app;
