@@ -18,7 +18,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Set views directory and view engine
-console.log('Current directory:', __dirname);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
